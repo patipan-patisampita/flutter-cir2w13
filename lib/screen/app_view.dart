@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'about.dart';
+import 'home_page.dart';
+import 'contact.dart';
+
 class AppView extends StatelessWidget {
   const AppView({Key? key}) : super(key: key);
 
@@ -21,11 +25,10 @@ class AppView extends StatelessWidget {
         child: Icon(Icons.home),
       ),
       drawer: Drawer(
-        // backgroundColor: Colors.indigo,
+        backgroundColor: Colors.indigo,
         child: ListView(
           children: [
             DrawerHeader(
-
               // child: Center(
               //   child: Text(
               //     "HEADER",
@@ -37,13 +40,11 @@ class AppView extends StatelessWidget {
               //   ),
               // ),
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: AssetImage("images/avanger3.jpg"),
-                )
-              ),
+                  image: DecorationImage(
+                fit: BoxFit.fill,
+                image: AssetImage("images/avanger3.jpg"),
+              )),
               child: Column(
-
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -51,42 +52,50 @@ class AppView extends StatelessWidget {
                     height: 60,
                     width: 60,
                     decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30)
-                    ),
-                    child: Center(child: Text("TH",style: TextStyle(fontSize: 15))),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30)),
+                    child: Center(
+                        child: Text("TH", style: TextStyle(fontSize: 15))),
                   ),
-                  Text("Thanos:Infinity War",style: TextStyle(color: Colors.white,fontSize: 20))
+                  Text("Thanos:Infinity War",
+                      style: TextStyle(color: Colors.white, fontSize: 20))
                 ],
-              ) ,
+              ),
             ),
             ListTile(
               onTap: () {
-                print("Home");
+                Navigator.push(context, MaterialPageRoute(builder:(context) => HomePage()));
               },
-              leading: Icon(Icons.home, color: Colors.indigo),
-              title: Text("Home", style: TextStyle(color: Colors.indigo)),
+              leading: Icon(Icons.home, color: Colors.white),
+              title: Text("Home", style: TextStyle(color: Colors.white)),
             ),
             ListTile(
               onTap: () {
-                print("MENU-2");
+                Navigator.push(context, MaterialPageRoute(builder: (context) => About()));
               },
-              leading: Icon(Icons.account_circle, color: Colors.deepOrange),
-              title: Text("MENU-2"),
+              leading: Icon(Icons.account_circle, color: Colors.white),
+              title: Text("About", style: TextStyle(color: Colors.white)),
             ),
             ListTile(
-              leading: Icon(Icons.dns, color: Colors.deepOrange),
-              title: Text("MENU-3"),
+              onTap: () {
+                Navigator.pop(context);
+              },
+              leading: Icon(Icons.dns, color: Colors.white),
+              title: Text("Profile", style: TextStyle(color: Colors.white)),
             ),
             ListTile(
-              leading: Icon(Icons.api, color: Colors.deepOrange),
-              title: Text("MENU-4"),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ContactPage()));
+              },
+              leading: Icon(Icons.api, color: Colors.white),
+              title: Text("Contact", style: TextStyle(color: Colors.white)),
             ),
             SizedBox(height: 10),
             Divider(color: Colors.blueGrey),
             ListTile(
-              leading: Icon(Icons.power_settings_new, color: Colors.deepOrange),
-              title: Text("EXIT Program"),
+              leading: Icon(Icons.power_settings_new, color: Colors.white),
+              title:
+                  Text("EXIT Program", style: TextStyle(color: Colors.white)),
             ),
           ],
         ),
